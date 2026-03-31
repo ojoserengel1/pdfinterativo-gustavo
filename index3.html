@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Novo Drop Global — Do Zero à Primeira Venda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,200;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070B;
+  --s1:rgba(255,255,255,0.025);
+  --s2:rgba(255,255,255,0.04);
+  --bd:rgba(255,255,255,0.07);
+  --bd-g:rgba(233,164,48,0.22);
+  --gold:#E9A430;
+  --gold-d:rgba(233,164,48,0.12);
+  --gold-g:rgba(233,164,48,0.28);
+  --w:#EDE9E2;
+  --m:rgba(237,233,226,0.45);
+  --m2:rgba(237,233,226,0.2);
+  --red:#FF6B6B;
+  --red-d:rgba(255,107,107,0.1);
+  --grn:#4ADE80;
+  --grn-d:rgba(74,222,128,0.1);
+  --teal:#2DD4BF;
+}
+html{scroll-behavior:smooth;height:100%}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--w);
+  line-height:1.75;
+  overflow-x:hidden;
+  font-weight:300;
+}
+
+/* NOISE */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+.o1{width:700px;height:700px;background:radial-gradient(circle,rgba(233,164,48,0.07) 0%,transparent 70%);top:-200px;right:-200px}
+.o2{width:500px;height:500px;background:radial-gradient(circle,rgba(45,212,191,0.05) 0%,transparent 70%);bottom:-100px;left:-100px}
+
+/* PROGRESS BAR */
+#pb{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),#C97D10);z-index:9999;transition:width 0.08s linear}
+
+/* SECTION */
+.ch{
+  min-height:100vh;
+  padding:120px 24px 100px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;z-index:1;
+}
+.ch-inner{max-width:760px;width:100%;margin:0 auto}
+
+/* CHAPTER LABEL */
+.ch-num{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:28px;
+}
+.ch-num-line{height:1px;width:32px;background:linear-gradient(90deg,var(--gold),transparent)}
+.ch-num-text{
+  font-family:'Outfit',sans-serif;
+  font-size:0.68rem;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* HEADINGS */
+.ch-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-1px;
+  color:var(--w);
+  margin-bottom:20px;
+}
+.ch-title em{font-style:italic;font-weight:200;color:var(--m)}
+.ch-title .g{color:var(--gold)}
+.ch-sub{
+  font-size:1rem;color:var(--m);
+  font-weight:300;line-height:1.7;
+  margin-bottom:32px;max-width:580px;
+}
+
+/* DIVIDER */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(233,164,48,0.1),transparent);
+  margin:48px 0;width:100%;
+}
+
+/* IMAGES */
+.g-img{
+  width:100%;border-radius:12px;
+  margin:32px 0;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 0 1px var(--bd);
+  display:block;
+}
+.g-img-hero{
+  width:100%;max-width:560px;
+  border-radius:16px;
+  margin:40px auto;display:block;
+  box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(233,164,48,0.1);
+}
+
+/* CARDS */
+.g-card{
+  background:var(--s1);
+  border:1px solid var(--bd);
+  border-radius:12px;
+  padding:28px 32px;
+  margin:16px 0;
+  position:relative;overflow:hidden;
+}
+.g-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(233,164,48,0.2),transparent);
+}
+.g-card-dark{
+  background:rgba(0,0,0,0.3);
+  border:1px solid var(--bd-g);
+}
+.g-card-center{text-align:center}
+.g-card h3{
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;font-weight:700;
+  color:var(--w);margin-bottom:12px;
+}
+.g-card p{font-size:0.93rem;color:var(--m);line-height:1.75}
+.g-card strong{color:var(--w);font-weight:500}
+
+/* BADGE PILL */
+.g-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:100px;
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.g-badge-gold{background:var(--gold-d);color:var(--gold);border:1px solid rgba(233,164,48,0.2)}
+.g-badge-muted{background:var(--s2);color:var(--m);border:1px solid var(--bd)}
+
+/* CHECK / X ITEMS */
+.items-list{display:flex;flex-direction:column;gap:4px;margin:16px 0}
+.item{display:flex;align-items:flex-start;gap:14px;padding:10px 0;font-size:0.93rem;color:var(--m);border-bottom:1px solid rgba(255,255,255,0.04)}
+.item:last-child{border-bottom:none}
+.item .ico{font-size:1rem;flex-shrink:0;margin-top:2px}
+.item strong{color:var(--w);font-weight:500}
+
+/* COMPARE TABLE */
+.cmp-wrap{margin:32px 0;border-radius:12px;overflow:hidden;border:1px solid var(--bd)}
+.cmp-head{display:grid;grid-template-columns:1fr 1fr}
+.cmp-head-old{
+  padding:14px 20px;font-size:0.78rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  background:rgba(255,107,107,0.08);color:var(--red);
+  text-align:center;border-right:1px solid var(--bd);
+}
+.cmp-head-new{
+  padding:14px 20px;font-size:0.78rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  background:rgba(233,164,48,0.08);color:var(--gold);
+  text-align:center;
+}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--bd)}
+.cmp-label{
+  grid-column:1/-1;
+  padding:7px 20px;
+  background:rgba(0,0,0,0.25);
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  color:rgba(237,233,226,0.25);
+  border-top:1px solid var(--bd);
+}
+.cmp-cell{
+  padding:12px 20px;font-size:0.88rem;
+  color:var(--m);
+}
+.cmp-cell-old{color:rgba(255,107,107,0.8);border-right:1px solid var(--bd)}
+.cmp-cell-new{color:rgba(233,164,48,0.9)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border-radius:12px;overflow:hidden;margin:32px 0}
+.stat{
+  background:var(--s1);
+  padding:32px 20px;text-align:center;
+}
+.stat-val{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:900;
+  color:var(--gold);line-height:1;margin-bottom:8px;
+}
+.stat-lbl{font-size:0.78rem;color:var(--m);letter-spacing:0.5px}
+
+/* CAMPAIGN TABLE */
+.camp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border-radius:10px;overflow:hidden;margin:20px 0}
+.camp-cell{background:var(--s1);padding:18px 20px}
+.camp-cell .lbl{font-size:0.75rem;color:var(--m2);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.camp-cell .val{font-size:1.05rem;font-weight:500;color:var(--w)}
+.camp-cell .val-g{color:var(--gold)}
+.camp-cell .val-s{color:rgba(237,233,226,0.5);font-size:0.82rem;font-weight:300}
+
+/* FLOW STEPS */
+.flow{display:flex;flex-direction:column;gap:0;margin:28px 0}
+.flow-step{
+  display:flex;align-items:center;gap:20px;
+  padding:16px 24px;
+  background:var(--s1);
+  border:1px solid var(--bd);
+  border-radius:0;
+  font-size:0.92rem;color:var(--m);
+  border-bottom:none;
+}
+.flow-step:first-child{border-radius:10px 10px 0 0}
+.flow-step:last-child{border-radius:0 0 10px 10px;border-bottom:1px solid var(--bd)}
+.flow-step strong{color:var(--w);font-weight:500}
+.step-circle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#C97D10);
+  color:#0A0700;font-weight:700;font-size:0.82rem;flex-shrink:0;
+}
+.flow-arrow{
+  text-align:center;padding:6px 0;
+  color:rgba(233,164,48,0.4);font-size:1rem;
+  background:var(--bg);
+  border-left:1px solid var(--bd);border-right:1px solid var(--bd);
+}
+
+/* CAT GRID */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0}
+.cat-item{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 18px;
+  background:var(--s1);border:1px solid var(--bd);border-radius:10px;
+  transition:border-color 0.25s;
+}
+.cat-item:hover{border-color:var(--bd-g)}
+.cat-ico{font-size:1.5rem;flex-shrink:0}
+.cat-item strong{font-size:0.9rem;font-weight:500;color:var(--w)}
+.cat-item span{font-size:0.8rem;color:var(--m);display:block;margin-top:2px}
+
+/* PHASE CARDS */
+.phase{
+  position:relative;
+  background:var(--s1);
+  border:1px solid var(--bd);
+  border-radius:12px;
+  padding:28px 32px 28px 44px;
+  margin:14px 0;
+  overflow:hidden;
+}
+.phase::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.phase.p1::before{background:linear-gradient(to bottom,var(--gold),rgba(233,164,48,0.3))}
+.phase.p2::before{background:linear-gradient(to bottom,#C97D10,rgba(201,125,16,0.3))}
+.phase.p3::before{background:linear-gradient(to bottom,var(--grn),rgba(74,222,128,0.3))}
+.phase-tag{
+  display:inline-block;padding:3px 12px;border-radius:4px;
+  font-size:0.66rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.phase-tag.p1{background:rgba(233,164,48,0.12);color:var(--gold)}
+.phase-tag.p2{background:rgba(201,125,16,0.12);color:#D4921E}
+.phase-tag.p3{background:var(--grn-d);color:var(--grn)}
+.phase h3{
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--w);margin-bottom:14px;
+}
+.phase ul{padding-left:18px;color:var(--m);font-size:0.9rem;line-height:2.1}
+.phase ul li strong{color:var(--w);font-weight:500}
+.phase ul .g{color:var(--gold)}
+.phase ul .y{color:#D4921E}
+
+/* PILLARS */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0}
+.pillar{
+  text-align:center;
+  padding:28px 16px;
+  background:var(--s1);border:1px solid var(--bd);border-radius:12px;
+  transition:border-color 0.25s;
+}
+.pillar:hover{border-color:var(--bd-g)}
+.pillar-n{
+  font-family:'Fraunces',serif;
+  font-size:2.8rem;font-weight:900;
+  color:var(--gold);line-height:1;margin-bottom:10px;
+  opacity:0.8;
+}
+.pillar h3{font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;color:var(--w);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.pillar p{font-size:0.8rem;color:var(--m)}
+
+/* ERRORS */
+.err-item{
+  position:relative;
+  background:var(--red-d);
+  border:1px solid rgba(255,107,107,0.15);
+  border-radius:0 10px 10px 0;
+  padding:20px 24px;margin:10px 0;
+  border-left:3px solid var(--red);
+}
+.err-item strong{color:var(--red);font-weight:500;font-size:0.92rem;display:block;margin-bottom:6px}
+.err-item p{font-size:0.88rem;color:var(--m)}
+.err-item p strong{color:var(--w);font-size:inherit;display:inline;margin-bottom:0}
+
+/* EQUATION */
+.eq-box{
+  background:rgba(0,0,0,0.35);
+  border:1px solid var(--bd-g);
+  border-radius:12px;padding:28px;
+  text-align:center;margin:28px 0;
+}
+.eq-main{
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--gold);margin-bottom:10px;letter-spacing:0.5px;
+}
+.eq-sub{font-size:0.85rem;color:var(--m);margin-bottom:24px}
+.eq-items{display:flex;gap:12px;flex-wrap:wrap}
+.eq-item{
+  flex:1;min-width:130px;
+  padding:16px 12px;
+  background:var(--s1);border:1px solid var(--bd);border-radius:10px;
+  text-align:center;
+}
+.eq-item .ico{font-size:1.4rem;margin-bottom:6px}
+.eq-item .name{font-weight:500;font-size:0.88rem;color:var(--w);margin-bottom:4px}
+.eq-item .info{font-size:0.8rem;color:var(--m);margin-bottom:4px}
+.eq-item .marg{font-size:0.82rem;color:var(--gold);font-weight:500}
+
+/* GLOSSARY */
+.gls-section{margin-bottom:40px}
+.gls-heading{
+  display:flex;align-items:center;gap:14px;
+  font-size:0.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--m);margin-bottom:16px;
+}
+.gls-heading::after{content:'';flex:1;height:1px;background:var(--bd)}
+.gls-grid{display:grid;gap:8px}
+.gls-item{
+  background:var(--s1);border:1px solid var(--bd);
+  border-radius:10px;padding:18px 22px;
+  transition:border-color 0.25s;
+}
+.gls-item:hover{border-color:rgba(233,164,48,0.2)}
+.gls-term{
+  font-family:'Fraunces',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--gold);margin-bottom:4px;
+}
+.gls-def{font-size:0.85rem;color:var(--m);line-height:1.7}
+
+/* CTA BOX */
+.cta-section{
+  background:linear-gradient(135deg,rgba(233,164,48,0.07),rgba(201,125,16,0.04));
+  border:1px solid rgba(233,164,48,0.18);
+  border-radius:16px;
+  padding:52px 40px;
+  text-align:center;
+  margin:32px 0;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.cta-emoji{font-size:2.8rem;margin-bottom:16px;display:block}
+.cta-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  line-height:1.15;color:var(--w);margin-bottom:8px;
+}
+.cta-title .g{color:var(--gold)}
+.cta-date{
+  font-size:0.9rem;font-weight:500;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:16px;margin-top:4px;
+}
+.cta-desc{font-size:0.93rem;color:var(--m);max-width:480px;margin:0 auto 32px;line-height:1.75}
+.cta-btn{
+  display:inline-block;
+  padding:16px 48px;
+  background:linear-gradient(135deg,#E9A430,#C97D10);
+  color:#0A0700;font-family:'Outfit',sans-serif;
+  font-size:0.88rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  border-radius:6px;text-decoration:none;
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 30px rgba(233,164,48,0.2);
+  transition:transform 0.2s,box-shadow 0.3s;
+}
+.cta-btn::before{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transform:skewX(-20deg);transition:left 0.5s ease;
+}
+.cta-btn:hover::before{left:160%}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(233,164,48,0.3)}
+.cta-note{font-size:0.82rem;color:var(--m2);margin-top:24px}
+.cta-note strong{color:var(--m)}
+
+/* FOOTER LINE */
+.doc-footer{
+  text-align:center;margin-top:52px;padding-top:28px;
+  border-top:1px solid var(--bd);
+}
+.doc-footer p{font-size:0.78rem;color:var(--m2);letter-spacing:1px;text-transform:uppercase;font-weight:300}
+.doc-footer p+p{margin-top:4px;font-size:0.72rem}
+
+/* INLINE HIGHLIGHTS */
+.hi-g{color:var(--gold);font-weight:400}
+.hi-w{color:var(--w);font-weight:400}
+.hi-r{color:var(--red);font-weight:400}
+.hi-gr{color:var(--grn);font-weight:400}
+
+/* FORMULA BOX */
+.formula{
+  background:rgba(233,164,48,0.05);
+  border:1px solid rgba(233,164,48,0.15);
+  border-radius:10px;padding:24px 28px;
+  text-align:center;margin:24px 0;
+}
+.formula-title{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.formula-eq{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--w);line-height:1.6}
+.formula-eq .g{color:var(--gold)}
+.formula-note{font-size:0.82rem;color:var(--m);margin-top:10px}
+
+/* STEP CARD (for "Como Encontrar") */
+.step-cards{display:flex;flex-direction:column;gap:0;margin:20px 0}
+.step-card{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:16px 22px;
+  background:var(--s1);border:1px solid var(--bd);
+  border-bottom:none;font-size:0.9rem;color:var(--m);
+}
+.step-card:first-child{border-radius:10px 10px 0 0}
+.step-card:last-child{border-radius:0 0 10px 10px;border-bottom:1px solid var(--bd)}
+.step-card strong{color:var(--w);font-weight:500}
+
+/* CONTEXT ITEMS */
+.ctx-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;font-size:0.9rem;color:var(--m);border-bottom:1px solid rgba(255,255,255,0.04)}
+.ctx-item:last-child{border-bottom:none}
+.ctx-ico{color:var(--grn);flex-shrink:0;font-size:0.95rem;margin-top:2px}
+
+/* REVEAL ANIMATION */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* COVER */
+#capa{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 24px 80px;
+  position:relative;z-index:1;
+}
+.cover-inner{max-width:680px;width:100%}
+.cover-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:0.68rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:32px;
+}
+.cover-tag::before,.cover-tag::after{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.cover-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(3rem,7vw,6rem);
+  font-weight:900;line-height:1;letter-spacing:-2px;
+  color:var(--w);margin-bottom:4px;
+}
+.cover-title .line2{display:block;font-weight:200;font-style:italic;color:var(--m);font-size:0.6em;letter-spacing:-1px;margin-top:8px}
+.cover-sub{font-size:0.95rem;color:var(--m);max-width:420px;margin:20px auto 0;line-height:1.7}
+.cover-badge{
+  display:inline-block;margin-top:28px;
+  padding:7px 18px;border-radius:100px;
+  font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;
+  font-weight:500;color:var(--m);
+  background:var(--s2);border:1px solid var(--bd);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .ch{padding:100px 20px 80px}
+  .cover-title{font-size:clamp(2.4rem,10vw,4rem)}
+  .stats{grid-template-columns:1fr}
+  .pillar-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .eq-items{flex-direction:column}
+  .camp-grid{grid-template-columns:1fr}
+  .cmp-head{grid-template-columns:1fr 1fr}
+  .cmp-row{grid-template-columns:1fr 1fr}
+  .cmp-cell{padding:10px 12px;font-size:0.8rem}
+  .cmp-label{font-size:0.65rem;padding:6px 12px}
+  .cmp-head-old,.cmp-head-new{padding:12px 8px;font-size:0.7rem}
+  .cta-section{padding:40px 24px}
+  .phase{padding:24px 24px 24px 36px}
+  .g-card{padding:22px 22px}
+}
+@media(max-width:480px){
+  .cover-title{letter-spacing:-1px}
+  .ch-title{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div id="pb"></div>
+
+<!-- ═══ CAPA ═══ -->
+<section id="capa">
+<div class="cover-inner">
+  <div class="cover-tag">Sessão de Sábado · Gustavo Drop</div>
+  <h1 class="cover-title">
+    Novo Drop<br>Global
+    <span class="line2">Do Zero à Primeira Venda</span>
+  </h1>
+  <img src="globe_shopify_hero.png" alt="Globo com pontos de venda Shopify" class="g-img-hero rv">
+  <p class="cover-sub">O mapa completo para você entender o mercado global de vendas online e se preparar para a sua transformação financeira.</p>
+  <span class="cover-badge">Fundamentos do Modelo Global de Vendas Online</span>
+</div>
+</section>
+
+<!-- ═══ CAP 01: OBJETIVOS ═══ -->
+<section class="ch" id="objetivos">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 01</span></div>
+  <h2 class="ch-title">Definindo Objetivos <em>e Compromissos</em></h2>
+
+  <div class="g-card g-card-center rv">
+    <h3 style="font-size:1.6rem;margin-bottom:12px">Parabéns! 🎉</h3>
+    <p>Parabéns por ter tomado essa decisão de participar da <strong class="hi-g">Sessão do Sábado do Zero a Primeira Venda</strong> que acontece no dia <strong style="color:#D4921E">18 de Abril às 16h</strong>.</p>
+  </div>
+
+  <p style="margin:28px 0 14px;font-weight:500;font-size:0.95rem;color:var(--w)">A maioria das pessoas está presa em um ciclo:</p>
+  <div class="items-list rv">
+    <div class="item"><span class="ico">❌</span><span>Consumindo conteúdo sem aplicar</span></div>
+    <div class="item"><span class="ico">❌</span><span>Procurando o "segredo" mágico</span></div>
+    <div class="item"><span class="ico">❌</span><span>Esperando o momento perfeito</span></div>
+  </div>
+
+  <div class="g-card rv" style="margin-top:20px;border-color:var(--bd-g)">
+    <div class="item" style="border:none;padding:0"><span class="ico">✅</span><span><strong class="hi-w">Você faz parte dos 3%</strong> que decidiram agir. Isso já te coloca à frente de 97% das pessoas.</span></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 02: O MAPA ═══ -->
+<section class="ch" id="mapa">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 02</span></div>
+  <h2 class="ch-title">O Mapa: <em>Como o Dinheiro Funciona Online</em></h2>
+
+  <div class="g-card g-card-center rv">
+    <p style="font-size:1rem;color:var(--w)">Sabe aquela sensação de <strong>dirigir sem GPS?</strong></p>
+    <p style="margin-top:8px">É exatamente assim que 90% das pessoas tentam construir negócios online.<br>Mas você? Você vai ver o <strong class="hi-g">mapa COMPLETO</strong> antes de ligar o motor.</p>
+  </div>
+
+  <img src="transformation_hero.png" alt="Visão panorâmica de oportunidade digital global" class="g-img rv">
+
+  <p style="font-size:0.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:16px;margin-top:28px">A Equação Fundamental do Enriquecimento</p>
+
+  <div class="eq-box rv">
+    <div class="eq-main">ENRIQUECER = VENDER VALOR &gt; CUSTO</div>
+    <p class="eq-sub">Toda riqueza nasce quando o <strong style="color:var(--w)">valor percebido</strong> supera o <strong style="color:var(--w)">custo real</strong> de produção.</p>
+    <div class="eq-items">
+      <div class="eq-item"><div class="ico">🧴</div><div class="name">Perfume</div><div class="info">Custa R$80 → Vende R$4.000</div><div class="marg">50x de margem</div></div>
+      <div class="eq-item"><div class="ico">🍔</div><div class="name">Hambúrguer</div><div class="info">Custa R$8 → Vende R$35</div><div class="marg">4,3x de margem</div></div>
+      <div class="eq-item"><div class="ico">🏋️</div><div class="name">Academia</div><div class="info">Custa R$0 → Vende R$150</div><div class="marg">∞ de margem</div></div>
+    </div>
+  </div>
+
+  <div class="g-card g-card-dark rv">
+    <p>💡 <strong class="hi-w">No Novo Drop Global:</strong> você compra um produto por US$5, vende por US$35, e ainda gasta apenas US$2-3 em anúncio. <span class="hi-g">Isso é margem real, em dólar.</span></p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 03: DROPSHIPPING ═══ -->
+<section class="ch" id="dropshipping">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 03</span></div>
+  <h2 class="ch-title">O Que é <span class="g">Dropshipping</span> e Como Funciona</h2>
+  <p class="ch-sub">O dropshipping é um modelo de negócio onde você vende produtos de um fornecedor sem precisar de estoque. Todo o processo é automático, online, 24 horas por dia.</p>
+
+  <img src="dropshipping_workflow.png" alt="Ciclo do dropshipping" class="g-img rv">
+
+  <p style="font-size:0.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:16px">Os 6 Pilares do Fluxo</p>
+
+  <div class="flow rv">
+    <div class="flow-step"><span class="step-circle">1</span><span>Você <strong>cria uma loja online</strong> (Shopify)</span></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><span class="step-circle">2</span><span>Adiciona <strong>produtos do fornecedor</strong> ao catálogo</span></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><span class="step-circle">3</span><span>Cliente <strong>acessa e compra</strong> através do seu anúncio</span></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><span class="step-circle">4</span><span>Fornecedor <strong>recebe o pedido</strong> automaticamente</span></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><span class="step-circle">5</span><span>Fornecedor <strong>envia para o cliente</strong> (1-3 dias)</span></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><span class="step-circle">6</span><span>Você <strong class="hi-g">recebe o lucro!</strong> 💰</span></div>
+  </div>
+
+  <div class="g-card rv" style="margin-top:20px">
+    <h3>Características-Chave do Modelo</h3>
+    <div class="items-list" style="margin-top:8px">
+      <div class="item"><span class="ico">✅</span><span><strong class="hi-w">Sem estoque</strong> — os produtos são do fornecedor</span></div>
+      <div class="item"><span class="ico">✅</span><span><strong class="hi-w">Vendas automáticas</strong> — 24h por dia, 7 dias por semana</span></div>
+      <div class="item"><span class="ico">✅</span><span><strong class="hi-w">+300 mil produtos</strong> disponíveis, alcance global</span></div>
+      <div class="item"><span class="ico">✅</span><span><strong class="hi-w">Lucro direto na conta</strong> — saque via Pix ou conta em dólar</span></div>
+    </div>
+  </div>
+
+  <div class="g-card g-card-dark rv">
+    <p>🔑 O fluxo é idêntico no modelo antigo e no novo. O que muda é <strong class="hi-g">PARA ONDE</strong> e <strong class="hi-g">COM QUEM</strong> você vende — e isso faz toda a diferença nos resultados.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 04: COMPARATIVO ═══ -->
+<section class="ch" id="comparativo">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 04</span></div>
+  <h2 class="ch-title">Modelo Antigo <em>vs.</em> <span class="g">Novo Drop Global</span></h2>
+  <p class="ch-sub">Veja a diferença entre continuar no modelo antigo (Brasil/China) e migrar para o Novo Drop Global.</p>
+
+  <div class="cmp-wrap rv">
+    <div class="cmp-head">
+      <div class="cmp-head-old">❌ Modelo Antigo</div>
+      <div class="cmp-head-new">✅ Novo Drop Global</div>
+    </div>
+    <div class="cmp-row"><div class="cmp-label">País-alvo</div><div class="cmp-cell cmp-cell-old">Brasil</div><div class="cmp-cell cmp-cell-new">Países ocultos 🌍</div></div>
+    <div class="cmp-row"><div class="cmp-label">Fornecedor</div><div class="cmp-cell cmp-cell-old">AliExpress (China)</div><div class="cmp-cell cmp-cell-new">Fornecedores locais</div></div>
+    <div class="cmp-row"><div class="cmp-label">Entrega</div><div class="cmp-cell cmp-cell-old">15-45 dias 🐌</div><div class="cmp-cell cmp-cell-new">1-3 dias ⚡</div></div>
+    <div class="cmp-row"><div class="cmp-label">Concorrência</div><div class="cmp-cell cmp-cell-old">Altíssima</div><div class="cmp-cell cmp-cell-new">Quase zero</div></div>
+    <div class="cmp-row"><div class="cmp-label">Investimento inicial</div><div class="cmp-cell cmp-cell-old">Alto (mídia + loja)</div><div class="cmp-cell cmp-cell-new">R$30-40 por campanha</div></div>
+    <div class="cmp-row"><div class="cmp-label">Sofisticação da loja</div><div class="cmp-cell cmp-cell-old">Precisa de marca, influencer</div><div class="cmp-cell cmp-cell-new">Loja simples funciona</div></div>
+    <div class="cmp-row"><div class="cmp-label">Instagram obrigatório?</div><div class="cmp-cell cmp-cell-old">Sim, essencial</div><div class="cmp-cell cmp-cell-new">Não, desnecessário</div></div>
+    <div class="cmp-row"><div class="cmp-label">Impostos</div><div class="cmp-cell cmp-cell-old">Taxação pesada (China)</div><div class="cmp-cell cmp-cell-new">Incentivos fiscais</div></div>
+    <div class="cmp-row"><div class="cmp-label">Moeda de lucro</div><div class="cmp-cell cmp-cell-old">Real (BRL)</div><div class="cmp-cell cmp-cell-new">Dólar (USD) 💵</div></div>
+    <div class="cmp-row"><div class="cmp-label">ROI típico</div><div class="cmp-cell cmp-cell-old">2x – 5x</div><div class="cmp-cell cmp-cell-new" style="font-weight:600">30x – 40x 🚀</div></div>
+  </div>
+
+  <div class="g-card g-card-center rv" style="border-color:var(--bd-g)">
+    <p>💡 <strong class="hi-w">A sacada:</strong> gaste em <span style="color:#D4921E">moedas fracas</span> (anúncios baratos na LATAM) e receba em <span class="hi-g">dólar</span>. Isso gera margem de lucro <strong class="hi-w">muito superior</strong> ao modelo antigo.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 05: LEMBRETE ═══ -->
+<section class="ch" id="lembrete">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 05</span></div>
+  <h2 class="ch-title">Lembrete <em>— Números Reais da Operação</em></h2>
+  <p class="ch-sub">Resultados comprovados com dados reais de operação.</p>
+
+  <div class="stats rv">
+    <div class="stat"><div class="stat-val">206k</div><div class="stat-lbl">dólares em 3 semanas</div></div>
+    <div class="stat"><div class="stat-val">R$1M+</div><div class="stat-lbl">faturamento (1 loja)</div></div>
+    <div class="stat"><div class="stat-val">32x</div><div class="stat-lbl">retorno sobre investimento</div></div>
+  </div>
+
+  <div class="g-card rv">
+    <h3 style="margin-bottom:16px">📊 Exemplo de Campanha Real</h3>
+    <div class="camp-grid">
+      <div class="camp-cell"><div class="lbl">Investimento no dia</div><div class="val">US$ 53 <span class="val-s">(R$273)</span></div></div>
+      <div class="camp-cell"><div class="lbl">Vendas no dia</div><div class="val val-g">US$ 1.732 <span class="val-s">(R$9.000)</span></div></div>
+      <div class="camp-cell"><div class="lbl">ROI do dia</div><div class="val" style="color:#D4921E">32x</div></div>
+      <div class="camp-cell"><div class="lbl">Campanha</div><div class="val">4 anúncios, US$8 cada</div></div>
+    </div>
+    <p style="font-size:0.83rem;color:var(--m);margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)">Campanhas vencedoras: custo por compra de <strong class="hi-g">US$0,90 a US$2,40</strong></p>
+  </div>
+
+  <div class="g-card g-card-dark rv">
+    <h3 style="margin-bottom:14px">⚠️ Contexto Importante</h3>
+    <div class="items-list">
+      <div class="ctx-item"><span class="ctx-ico">✅</span><span>Loja criada do zero em <strong class="hi-w">13 de janeiro de 2025</strong></span></div>
+      <div class="ctx-item"><span class="ctx-ico">✅</span><span><strong class="hi-w">Sem Instagram</strong>, sem marca, sem influenciadores</span></div>
+      <div class="ctx-item"><span class="ctx-ico">✅</span><span>Produtos <strong class="hi-w">simples e comuns</strong> do dia a dia</span></div>
+      <div class="ctx-item"><span class="ctx-ico">✅</span><span>Resultado proporcional ao investimento: iniciante começa menor</span></div>
+    </div>
+  </div>
+
+  <div class="g-card g-card-center rv" style="border-color:var(--bd-g)">
+    <p>🎯 <strong class="hi-w">Meta realista para iniciante:</strong> comece com R$30-40/dia, use a estratégia <span style="color:#D4921E">montinho-montão</span> (reinvestir lucros gradualmente), e mire em <span class="hi-g">R$10k-30k/mês</span> nos primeiros 90 dias.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 06: O QUE VENDER ═══ -->
+<section class="ch" id="produtos">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 06</span></div>
+  <h2 class="ch-title">O Que Vender <em>e Onde Encontrar</em></h2>
+  <p class="ch-sub">Não existe "o" produto vencedor mágico. O segredo são produtos comuns do dia a dia, vendidos em países onde as pessoas <strong class="hi-w">não têm opções de compra online</strong>.</p>
+
+  <img src="products_showcase.png" alt="Showcase de categorias de produtos" class="g-img rv">
+
+  <p style="font-size:0.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:16px">Categorias Que Mais Vendem</p>
+
+  <div class="cat-grid rv">
+    <div class="cat-item"><span class="cat-ico">👟</span><div><strong>Vestuário</strong><span>Tênis, camisas, calças, combos de roupas</span></div></div>
+    <div class="cat-item"><span class="cat-ico">💄</span><div><strong>Saúde e Beleza</strong><span>Cosméticos, clareadores, produtos íntimos</span></div></div>
+    <div class="cat-item"><span class="cat-ico">💊</span><div><strong>Nutracêuticos</strong><span>Suplementos e produtos naturais</span></div></div>
+    <div class="cat-item"><span class="cat-ico">🏠</span><div><strong>Casa e Utilidades</strong><span>Furadeira, jardinagem, projetor, almofadas</span></div></div>
+    <div class="cat-item"><span class="cat-ico">🕶️</span><div><strong>Acessórios</strong><span>Óculos, relógios, bijuterias</span></div></div>
+    <div class="cat-item"><span class="cat-ico">📱</span><div><strong>Eletrônicos</strong><span>Capas, fones, gadgets do dia a dia</span></div></div>
+  </div>
+
+  <div class="g-card rv" style="margin-top:8px">
+    <h3 style="margin-bottom:14px">🔍 Como Encontrar Produtos</h3>
+    <div class="step-cards">
+      <div class="step-card"><span class="step-circle" style="flex-shrink:0">1</span><span>Acesse a <strong>Biblioteca de Anúncios do Meta</strong> (Facebook/Instagram)</span></div>
+      <div class="step-card"><span class="step-circle" style="flex-shrink:0">2</span><span>Filtre por <strong>país</strong> e busque palavras-chave como "contra entrega"</span></div>
+      <div class="step-card"><span class="step-circle" style="flex-shrink:0">3</span><span>Observe <strong>anúncios ativos</strong> — se existem vários, é sinal que vende</span></div>
+      <div class="step-card"><span class="step-circle" style="flex-shrink:0">4</span><span>Analise a página e o anúncio e <strong>adapte</strong> (não copie igual)</span></div>
+    </div>
+  </div>
+
+  <div class="g-card g-card-dark rv">
+    <p>💡 Páginas nesses países são <strong class="hi-w">simples</strong> — como as que se faziam 10 anos atrás no Brasil. E funcionam! <strong class="hi-g">Não precisa de sofisticação. O básico bem feito vende.</strong></p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 07: O QUE EVITAR ═══ -->
+<section class="ch" id="erros">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 07</span></div>
+  <h2 class="ch-title">O Que Evitar <em>— Erros Fatais</em></h2>
+  <p class="ch-sub">Mesmo com oceano azul, alguns iniciantes erram. Veja os erros mais comuns e evite-os a todo custo.</p>
+
+  <div class="rv">
+    <div class="err-item"><strong>✕ Acreditar no produto vencedor mágico</strong><p>Não existe. São produtos comuns do dia a dia. A diferença é que <strong>lá não há opções de compra online</strong>.</p></div>
+    <div class="err-item"><strong>✕ Insistir no mesmo erro</strong><p>Não vendeu? Pare, analise e corrija. Troque produto, melhore página ou refaça anúncio. <strong>Flexibilidade é chave.</strong></p></div>
+    <div class="err-item"><strong>✕ Começar investindo muito</strong><p>Comece com R$30-40. Faça as primeiras vendas e reinvista com o lucro. <strong>Montinho vira montão.</strong></p></div>
+    <div class="err-item"><strong>✕ Vender em mercados saturados</strong><p>Brasil com produtos saturados e margens apertadas = jogo pequeno. <strong>Jogue o jogo grande.</strong></p></div>
+    <div class="err-item"><strong>✕ Querer fazer tudo sozinho</strong><p>Com +100 mil opções, acertar sozinho é quase impossível. <strong>Use estruturas prontas e validadas.</strong></p></div>
+    <div class="err-item"><strong>✕ Não seguir as fases</strong><p>Não pule para EUA/Europa sem dominar o primeiro país. <strong>Um país de cada vez. Paciência estratégica.</strong></p></div>
+  </div>
+
+  <div class="g-card g-card-center rv" style="margin-top:8px;border-color:rgba(233,164,48,0.2)">
+    <p>⚡ O erro não é <strong class="hi-w">você</strong>. O erro é <strong class="hi-w">jogar o jogo errado</strong>. Jogue o jogo certo — <span class="hi-g">país certo, produto validado, estrutura pronta</span> — e os resultados aparecem.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 08: 3 FASES ═══ -->
+<section class="ch" id="fases">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 08</span></div>
+  <h2 class="ch-title">As 3 Fases <em>do Novo Drop Global</em></h2>
+  <p class="ch-sub">Estratégia de expansão inteligente por países. Comece pequeno, cresça com segurança.</p>
+
+  <img src="world_expansion_map.png" alt="Mapa de expansão global" class="g-img rv">
+
+  <div class="rv">
+    <div class="phase p1">
+      <span class="phase-tag p1">Fase 1</span>
+      <h3>Primeiro País — Primeiros R$10k</h3>
+      <ul>
+        <li>País mais fácil, com <strong>baixa concorrência</strong></li>
+        <li>Mesmos produtos, só copiar e adaptar</li>
+        <li>Campanha inicial: <span class="g">R$30-40</span></li>
+        <li>Moeda fraca = anúncios baratos. Lucro em dólar</li>
+        <li><span class="y"><strong>Meta: fazer caixa e aprender o jogo</strong></span></li>
+      </ul>
+    </div>
+    <div class="phase p2">
+      <span class="phase-tag p2">Fase 2</span>
+      <h3>Expandir para Países Estratégicos</h3>
+      <ul>
+        <li>Países estratégicos com baixa concorrência</li>
+        <li>Ctrl+C, Ctrl+V: <strong>mesma loja, mesmo idioma, mesmos produtos</strong></li>
+        <li>Mudar país na campanha = <span class="g">1 botão</span></li>
+        <li>Como jogar War: domine um país de cada vez</li>
+        <li><span class="y"><strong>Meta: R$50k-100k/mês</strong></span></li>
+      </ul>
+    </div>
+    <div class="phase p3">
+      <span class="phase-tag p3">Fase 3</span>
+      <h3>EUA + Europa — Nível Avançado</h3>
+      <ul>
+        <li>Para quem já fatura <strong>R$100-300k/mês</strong></li>
+        <li>Mercados mais concorridos, tráfego mais caro</li>
+        <li>Campanha inicial: <span class="g">R$300-400</span></li>
+        <li>Você já tem caixa e experiência para competir</li>
+        <li><span class="y"><strong>O mundo todo é seu mercado 🌍</strong></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="g-card g-card-center rv" style="border-color:var(--bd-g)">
+    <p>🎯 <strong class="hi-w">Regra de ouro:</strong> Nunca pule fases. Domine o <span class="hi-g">Fase 1</span> antes de avançar. A pressa é a maior inimiga do lucro consistente.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 09: 3 PILARES ═══ -->
+<section class="ch" id="pilares">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 09</span></div>
+  <h2 class="ch-title">Os 3 Pilares <em>do Sucesso</em></h2>
+  <p class="ch-sub">Se você acertar esses três pilares, vai ter resultado. <strong class="hi-w">Não tem como não ter.</strong> Eles funcionam juntos como uma engrenagem.</p>
+
+  <img src="three_pillars.png" alt="Os três pilares do sucesso" class="g-img rv">
+
+  <div class="pillar-grid rv">
+    <div class="pillar"><div class="pillar-n">01</div><h3>LOJA</h3><p>País certo + Loja configurada</p></div>
+    <div class="pillar"><div class="pillar-n">02</div><h3>PRODUTO + PÁGINA</h3><p>Produto validado + Página de conversão</p></div>
+    <div class="pillar"><div class="pillar-n">03</div><h3>ANÚNCIO</h3><p>Criativo que converte + Tráfego pago</p></div>
+  </div>
+
+  <div class="g-card rv">
+    <h3 style="margin-bottom:18px">Detalhamento dos Pilares</h3>
+    <div style="margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--bd)">
+      <p style="font-weight:500;color:var(--gold);margin-bottom:6px">Pilar 1 — Loja no País Certo</p>
+      <p style="font-size:0.88rem;color:var(--m)">Comece pelo país mais fácil. A loja não precisa ser sofisticada. Mesma loja funciona para todos os países latinos (espanhol). Mudar de país = 1 botão na campanha.</p>
+    </div>
+    <div style="margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--bd)">
+      <p style="font-weight:500;color:#D4921E;margin-bottom:6px">Pilar 2 — Produto + Página Validados</p>
+      <p style="font-size:0.88rem;color:var(--m)">Não tente adivinhar. Use produtos validados e páginas de alta conversão. Com +100 mil opções, um iniciante sozinho dificilmente acerta. Receba pronto.</p>
+    </div>
+    <div>
+      <p style="font-weight:500;color:var(--grn);margin-bottom:6px">Pilar 3 — Anúncio de Alta Conversão</p>
+      <p style="font-size:0.88rem;color:var(--m)">O anúncio é o que leva o cliente à loja. Tráfego pago é simples (apertar botões), mas o criativo precisa converter. Use anúncios validados com IA.</p>
+    </div>
+  </div>
+
+  <div class="formula rv">
+    <div class="formula-title">🎯 Fórmula do Resultado</div>
+    <div class="formula-eq">País Certo + Produto Validado + Página Profissional + Anúncio de Alta Conversão = <span class="g">RESULTADO</span></div>
+    <p class="formula-note">O tráfego é receita de bolo. O segredo está na combinação certa dos pilares.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 10: O GRANDE DIA ═══ -->
+<section class="ch" id="proximos-passos">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 10</span></div>
+  <h2 class="ch-title">O Grande Dia <em>— Sessão de Sábado</em></h2>
+  <p class="ch-sub">Você já tem a base completa. Agora só faltam duas ações para garantir que você esteja <strong class="hi-w">100% preparado</strong>.</p>
+
+  <div class="cta-section rv">
+    <span class="cta-emoji">🚀</span>
+    <div class="cta-title">Sessão de Sábado<br><span class="g">Do Zero à Primeira Venda</span></div>
+    <div class="cta-date">18 de Abril · 16h</div>
+    <p class="cta-desc">Aula ao vivo onde você vai aprender o passo a passo completo para configurar tudo e fazer sua primeira venda no Novo Drop Global.</p>
+
+    <div class="step-cards" style="max-width:480px;margin:0 auto 32px">
+      <div class="step-card" style="justify-content:flex-start">
+        <span class="step-circle" style="flex-shrink:0">1</span>
+        <span><strong>Ative o lembrete</strong> na sua agenda para não esquecer</span>
+      </div>
+    </div>
+
+    <a href="#" class="cta-btn">📅 Adicionar à Minha Agenda</a>
+
+    <p class="cta-note" style="margin-top:24px">Você está <strong>muito à frente</strong> dos demais. Te espero lá! 🤝</p>
+  </div>
+
+  <div class="doc-footer">
+    <p>Guia Novo Drop Global — Do Zero à Primeira Venda</p>
+    <p>Sessão de Sábado · Todos os direitos reservados</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAP 11: GLOSSÁRIO ═══ -->
+<section class="ch" id="glossario" style="min-height:auto;padding-top:80px;padding-bottom:100px">
+<div class="ch-inner">
+  <div class="ch-num"><div class="ch-num-line"></div><span class="ch-num-text">Capítulo 11</span></div>
+  <h2 class="ch-title">Glossário <em>— Termos Essenciais</em></h2>
+  <p class="ch-sub">Domine estes termos antes de seguir. Eles são o vocabulário do seu novo negócio.</p>
+
+  <div class="gls-section rv">
+    <div class="gls-heading">📦 Termos de E-commerce &amp; Dropshipping</div>
+    <div class="gls-grid">
+      <div class="gls-item"><div class="gls-term">Dropshipping</div><div class="gls-def">Modelo de negócio onde você vende produtos de um fornecedor sem precisar de estoque. O fornecedor envia diretamente ao cliente final. Você lucra com a diferença entre o preço de venda e o custo do produto.</div></div>
+      <div class="gls-item"><div class="gls-term">Novo Drop Global</div><div class="gls-def">Modalidade avançada de dropshipping que foca em vender para mercados internacionais (países com pouca concorrência digital), utilizando fornecedores locais desses países e lucrando em moedas fortes como o dólar.</div></div>
+      <div class="gls-item"><div class="gls-term">Shopify</div><div class="gls-def">Plataforma líder mundial para criação de lojas online. Permite criar, personalizar e gerenciar sua loja de dropshipping de forma simples, sem necessidade de programação.</div></div>
+      <div class="gls-item"><div class="gls-term">Fornecedor Local</div><div class="gls-def">Empresa que armazena e envia produtos dentro do próprio país do cliente. Diferente do AliExpress (China), o fornecedor local garante entregas rápidas (1-3 dias) e sem taxas de importação.</div></div>
+      <div class="gls-item"><div class="gls-term">Ticket Médio</div><div class="gls-def">Valor médio gasto por cada cliente em uma compra. Produtos com ticket mais alto significam mais lucro por venda. Ex.: vender um combo de R$150 ao invés de um item de R$30.</div></div>
+      <div class="gls-item"><div class="gls-term">ROI (Retorno sobre Investimento)</div><div class="gls-def">Métrica que mostra quanto você lucrou em relação ao que investiu. Se investiu R$100 e vendeu R$3.200, seu ROI é de 32x (multiplicou por 32).</div></div>
+      <div class="gls-item"><div class="gls-term">COD (Cash on Delivery / Contra Entrega)</div><div class="gls-def">Modalidade de pagamento onde o cliente paga quando recebe o produto. Muito popular em países da LATAM e Oriente Médio. Reduz a barreira de compra e aumenta as vendas.</div></div>
+      <div class="gls-item"><div class="gls-term">SKU</div><div class="gls-def">Código único que identifica cada produto no seu catálogo. Serve para organizar o estoque e facilitar a gestão de pedidos.</div></div>
+    </div>
+  </div>
+
+  <div class="gls-section rv">
+    <div class="gls-heading">📢 Termos de Marketing Digital</div>
+    <div class="gls-grid">
+      <div class="gls-item"><div class="gls-term">Tráfego Pago</div><div class="gls-def">Estratégia de pagar plataformas (Meta/Facebook, Google, TikTok) para exibir seus anúncios a pessoas que têm potencial de comprar. É o motor que leva clientes à sua loja.</div></div>
+      <div class="gls-item"><div class="gls-term">Criativo</div><div class="gls-def">O anúncio em si — pode ser um vídeo, imagem ou carrossel. Um bom criativo é o que faz a pessoa parar de rolar o feed e clicar para comprar. É a peça mais importante do marketing.</div></div>
+      <div class="gls-item"><div class="gls-term">CPM (Custo por Mil Impressões)</div><div class="gls-def">Quanto você paga para o anúncio ser exibido 1.000 vezes. Em países com moeda fraca, o CPM é muito mais barato, o que significa mais visualizações com menos investimento.</div></div>
+      <div class="gls-item"><div class="gls-term">CPA (Custo por Aquisição)</div><div class="gls-def">Quanto você gasta em anúncios para gerar UMA venda. Quanto menor o CPA, mais lucrativa é a operação. No Novo Drop Global, o CPA pode chegar a menos de US$3.</div></div>
+      <div class="gls-item"><div class="gls-term">Pixel</div><div class="gls-def">Código de rastreamento instalado na sua loja que coleta dados sobre quem visita, quem compra, e ajuda as plataformas de anúncio a encontrar mais clientes parecidos.</div></div>
+      <div class="gls-item"><div class="gls-term">Conversão</div><div class="gls-def">Quando um visitante da sua loja realiza a ação desejada (geralmente uma compra). Taxa de conversão é a % de visitantes que compram.</div></div>
+      <div class="gls-item"><div class="gls-term">VSL (Video Sales Letter)</div><div class="gls-def">Vídeo de vendas de 30-45 minutos que apresenta o produto, seus benefícios e convence o visitante a comprar. É usado na página do produto para aumentar a conversão.</div></div>
+      <div class="gls-item"><div class="gls-term">Página de Vendas (Landing Page)</div><div class="gls-def">Página online focada em apresentar um único produto e convencer o visitante a comprar. Não tem menus ou distrações — tudo direciona para o botão de compra.</div></div>
+      <div class="gls-item"><div class="gls-term">Retargeting</div><div class="gls-def">Estratégia de exibir anúncios para pessoas que já visitaram sua loja mas não compraram. "Perseguir" o cliente com lembretes aumenta as chances de fechar a venda.</div></div>
+      <div class="gls-item"><div class="gls-term">Escala / Escalar</div><div class="gls-def">Aumentar o investimento em anúncios que estão dando resultado para multiplicar as vendas. Se uma campanha está lucrativa com R$30/dia, escalar é aumentar para R$100, R$500, R$1.000/dia.</div></div>
+      <div class="gls-item"><div class="gls-term">Biblioteca de Anúncios (Meta Ad Library)</div><div class="gls-def">Ferramenta gratuita do Meta (Facebook/Instagram) que permite ver TODOS os anúncios ativos de qualquer empresa em qualquer país. É usada para pesquisar produtos e criativos que estão funcionando.</div></div>
+      <div class="gls-item"><div class="gls-term">LATAM</div><div class="gls-def">Abreviação de América Latina. No contexto do Novo Drop Global, refere-se aos países hispânicos da região que representam mercados com baixa concorrência digital e alto potencial de vendas online.</div></div>
+    </div>
+  </div>
+
+  <div class="gls-section rv">
+    <div class="gls-heading">💰 Termos Financeiros</div>
+    <div class="gls-grid">
+      <div class="gls-item"><div class="gls-term">Margem de Lucro</div><div class="gls-def">A diferença entre o preço que você vende e o custo total (produto + envio + anúncio). No Novo Drop Global, margens de 50-70% são comuns, muito superiores ao modelo tradicional.</div></div>
+      <div class="gls-item"><div class="gls-term">Arbitragem Cambial</div><div class="gls-def">Estratégia de gastar em moedas mais fracas (pesos, reais) e receber em moedas fortes (dólar). Essa diferença de câmbio amplifica seus lucros naturalmente.</div></div>
+      <div class="gls-item"><div class="gls-term">Break-even</div><div class="gls-def">O ponto onde suas receitas igualam seus custos — ou seja, você parou de ter prejuízo mas ainda não está lucrando. A partir daqui, cada venda é lucro puro.</div></div>
+      <div class="gls-item"><div class="gls-term">Montinho-Montão</div><div class="gls-def">Estratégia de reinvestir os lucros gradualmente. Começa com R$30-40/dia, reinveste o lucro, e vai aumentando organicamente até chegar a investimentos maiores.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+// Progress bar
+const pb=document.getElementById('pb');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop||document.body.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  pb.style.width=(s/h*100)+'%';
+},{passive:true});
+
+// Scroll reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.style.transitionDelay=(i%4)*0.07+'s';
+  io.observe(el);
+});
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
