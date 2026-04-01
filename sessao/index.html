@@ -105,6 +105,7 @@ textarea.input-field{min-height:100px}
 .page{page-break-after:always;padding:40px 30px}
 }
 #progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--cyan),var(--yellow));z-index:9999;transition:width 0.1s linear;border-radius:0 2px 2px 0}
+.esconder{display:none}
 </style>
 </head>
 <body>
@@ -130,6 +131,8 @@ O mapa completo para você entender o mercado global de vendas online e se prepa
 <p style="color:var(--gray2);font-size:0.85rem;margin-top:12px">Preparando o terreno para sua transformação financeira</p>
 </div>
 </section>
+
+<div class="esconder">
 
 <!-- ═══════════════ CAP 01: OBJETIVOS ═══════════════ -->
 <section class="page" id="objetivos">
@@ -613,6 +616,16 @@ O mapa completo para você entender o mercado global de vendas online e se prepa
 </div>
 <span class="page-num">11</span>
 </section>
+
+</div><!-- fim .esconder -->
+
+<script>
+var delaySeconds = 55;
+var player = document.querySelector("vturb-smartplayer");
+player.addEventListener("player:ready", function() {
+  player.displayHiddenElements(delaySeconds, [".esconder"], { persist: true });
+});
+</script>
 
 <script>
 const bar=document.getElementById('progress-bar');
