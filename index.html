@@ -40,6 +40,11 @@ button:active{transform:scale(0.99)}
 const input = document.getElementById('cpf');
 const erro = document.getElementById('erro');
 
+// Captura todos os parâmetros da URL atual
+function getParams() {
+  return Object.fromEntries(new URLSearchParams(window.location.search));
+}
+
 input.addEventListener('input', () => {
   let v = input.value.replace(/\D/g, '').slice(0, 11);
   if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
@@ -58,7 +63,20 @@ function acessar() {
     input.focus();
     return;
   }
-  window.location.href = 'sessao';
+
+  const params = getParams();
+
+  // Dispara webhook com CPF + todos os parâmetros da URL
+  const webhookUrl = 'https://hook.us1.make.com/drh14kc4gsuji14btjelfp70j538321x';
+  fetch(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cpf, ...params })
+  }).catch(() => {}); // ignora erro de rede para não bloquear o redirecionamento
+
+  // Monta query string com UTMs + dados para passar à próxima página
+  const nextParams = new URLSearchParams({ cpf, ...params });
+  window.location.href = 'sessao?' + nextParams.toString();
 }
 </script>
 </body>
