@@ -140,8 +140,14 @@ Guia Novo Drop Global<br>
 <span class="badge badge-yellow" style="font-size:0.7rem">FUNDAMENTOS DO MODELO GLOBAL DE VENDAS ONLINE</span>
 </div>
 <p style="color:var(--gray2);font-size:0.85rem;margin-top:12px">Preparando o terreno para sua transformação financeira</p>
+<div class="esconder" style="margin-top:28px">
+<a href="https://sndflw.com/i/mtv-t14-reab" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#1ed760 0%,#15a349 100%);color:#ffffff;font-weight:800;font-size:1.05rem;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none;padding:18px 42px;border-radius:999px;box-shadow:0 10px 28px rgba(30,215,96,0.45),0 0 0 4px rgba(30,215,96,0.15);animation:pulseGreen 1.8s ease-in-out infinite;">ENTRAR GRUPO VIP</a>
+</div>
 </div>
 </section>
+<style>
+@keyframes pulseGreen{0%,100%{transform:scale(1);box-shadow:0 10px 28px rgba(30,215,96,0.45),0 0 0 4px rgba(30,215,96,0.15)}50%{transform:scale(1.04);box-shadow:0 14px 36px rgba(30,215,96,0.6),0 0 0 8px rgba(30,215,96,0.1)}}
+</style>
 
 <div class="esconder">
 
@@ -636,6 +642,16 @@ var player = document.querySelector("vturb-smartplayer");
 player.addEventListener("player:ready", function() {
   player.displayHiddenElements(delaySeconds, [".esconder"], { persist: true });
 });
+(function(){
+  var revealCheck = setInterval(function(){
+    var el = document.querySelector('.esconder');
+    if (el && getComputedStyle(el).display !== 'none') {
+      clearInterval(revealCheck);
+      var offset = Math.min(window.innerHeight * 0.55, 360);
+      window.scrollBy({ top: offset, left: 0, behavior: 'smooth' });
+    }
+  }, 400);
+})();
 </script>
 
 <script>
